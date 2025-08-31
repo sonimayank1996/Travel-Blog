@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 
 // Signup functionality
 exports.signUp = async (req, res) => {
-  console.log(process.env.JWT_SECRET);
-
   try {
     const newUser = await User.create(req.body);
     const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
